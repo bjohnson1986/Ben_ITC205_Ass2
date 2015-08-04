@@ -1,2 +1,8 @@
 package datamanagement;
-public class StudentMap extends java.util.HashMap<Integer, IStudent> {}
+
+import java.util.HashMap;
+
+@SuppressWarnings("serial")
+public class StudentMap extends HashMap<Integer, IStudent> {
+  
+}
