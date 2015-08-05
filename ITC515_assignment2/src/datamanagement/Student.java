@@ -8,13 +8,16 @@ public class Student implements IStudent {
   private StudentUnitRecordList studentUnitRecordList_;
 
   
+  // Constructor for the Student class. Will create the Student object based
+  // on the values of the parameters passed.
   public Student(Integer identification, String firstName, String lastName,
                  StudentUnitRecordList studentUnitRecordList) {
     this.identification_ = identification;
     this.firstName_ = firstName;
     this.lastName_ = lastName;
-    this.studentUnitRecordList_ = (studentUnitRecordList == null ? new StudentUnitRecordList()
-                                   : studentUnitRecordList);
+    this.studentUnitRecordList_ = (studentUnitRecordList == null ?
+                                   new StudentUnitRecordList() :
+                                   studentUnitRecordList);
   }
 
 
@@ -43,11 +46,16 @@ public class Student implements IStudent {
   }
 
   
+  // The addUnitRecord method will add the passed student unit record
+  // to this object's student unit record list.
   public void addUnitRecord(IStudentUnitRecord studentUnitRecord) {
     studentUnitRecordList_.add(studentUnitRecord);
   }
 
   
+  // The getUnitRecord method differs from the standard getter that
+  // returns the entire unit record list, rather it returns one unit
+  // record, if it exists, based on a passed unit code.
   public IStudentUnitRecord getUnitRecord(String unitCode) {
     for (IStudentUnitRecord r : studentUnitRecordList_) {
       if (r.getUnitCode().equals(unitCode)) {

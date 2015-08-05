@@ -5,7 +5,6 @@ import org.jdom.*;
 import java.util.HashMap;
 import java.util.List;
 
-
 public class StudentManager {
   
   private static StudentManager instance_ = null;
@@ -14,6 +13,8 @@ public class StudentManager {
   private HashMap<String, StudentMap> studentsToUnitsMap_;
 
   
+  // The StudentManager's get method. Will return the lone 
+  // instance of this class.
   public static StudentManager get() {
     if (instance_ == null) {
       instance_ = new StudentManager();
@@ -23,12 +24,17 @@ public class StudentManager {
   }
 
   
+  // The private StudentManager constructor, potentially called as
+  // a result of the get() method being called.
   private StudentManager() {
     studentMap_ = new StudentMap();
     studentsToUnitsMap_ = new HashMap<>();
   }
 
   
+  // The method getStudent will return a Student based on the passed id
+  // parameter. If the student doesn't exist, the createStudent method
+  // is called with the passed id parameter and that result is returned.
   public IStudent getStudent(Integer id) {
     IStudent iStudent = studentMap_.get(id);
     
@@ -36,6 +42,9 @@ public class StudentManager {
   }
 
   
+  // The getStudentElement will take a passed id parameter and return
+  // an Element based on the id matching a particular attribute value.
+  // If there is no match, it will return null.
   @SuppressWarnings("unchecked")
   private Element getStudentElement(Integer id) {
     for (Element el : (List<Element>) XMLManager.getXML().getDocument()
@@ -49,6 +58,9 @@ public class StudentManager {
   }
 
   
+  // The createStudent method will create a Student based on a match to 
+  // the passed id parameter. If the Student is not able to be created
+  // then an exception is thrown describing the problem.
   private IStudent createStudent(Integer id) {
     IStudent iStudent;
     Element element = getStudentElement(id);
@@ -66,6 +78,9 @@ public class StudentManager {
   }
 
   
+  // The createStudentProxy method will create and return a StudentProxy
+  // based on a match to the passed id parameter. If the Proxy cannot be 
+  // created, an exception is thrown describing the problem.
   private IStudent createStudentProxy(Integer id) {
     Element element = getStudentElement(id);
 
@@ -79,6 +94,9 @@ public class StudentManager {
   }
 
   
+  // The getStudentsByUnit method will create a StudentMap and return it.
+  // Its contents are based on what students have a matching unit code to 
+  // the passed unitCode parameter.
   public StudentMap getStudentsByUnit(String unitCode) {
     StudentMap sMap = studentsToUnitsMap_.get(unitCode);
     if (sMap != null) {

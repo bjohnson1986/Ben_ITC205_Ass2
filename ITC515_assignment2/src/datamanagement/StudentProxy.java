@@ -8,10 +8,11 @@ public class StudentProxy implements IStudent {
   private StudentManager studentManager_;
   
 
+  // StudentProxy constructor. Sets the relevant variables to the passed
+  // integers. Additionally, retrieves the StudentManager instance.
   public StudentProxy(Integer id, String firstName, String lastName) {
     this.identification_ = id;
     this.firstName_ = firstName;
-
     this.lastName_ = lastName;
     this.studentManager_ = StudentManager.get();
   }
@@ -33,27 +34,32 @@ public class StudentProxy implements IStudent {
 
   
   public void setFirstName(String firstName) {
-    this.studentManager_.getStudent(identification_).setFirstName(firstName);
+    this.studentManager_.getStudent(this.identification_).setFirstName(firstName);
   }
 
   
   public void setLastName(String lastName) {
-    this.studentManager_.getStudent(identification_).setLastName(lastName);
+    this.studentManager_.getStudent(this.identification_).setLastName(lastName);
   }
 
   
+  // The method addUnitRecord adds a single passed student unit record to
+  // the StudentManager of this StudentProxy object.
   public void addUnitRecord(IStudentUnitRecord studentRecord) {
-    this.studentManager_.getStudent(identification_).addUnitRecord(studentRecord);
+    this.studentManager_.getStudent(this.identification_).addUnitRecord(studentRecord);
   }
 
   
+  // The getUnitRecord method differs from the standard getter that
+  // returns the entire unit record list, rather it returns one unit
+  // record based on a passed unit code.
   public IStudentUnitRecord getUnitRecord(String unitCode) {
-    return this.studentManager_.getStudent(identification_).getUnitRecord(unitCode);
+    return this.studentManager_.getStudent(this.identification_).getUnitRecord(unitCode);
   }
 
   
   public StudentUnitRecordList getUnitRecords() {
-    return this.studentManager_.getStudent(identification_).getUnitRecords();
+    return this.studentManager_.getStudent(this.identification_).getUnitRecords();
   }
   
 }
