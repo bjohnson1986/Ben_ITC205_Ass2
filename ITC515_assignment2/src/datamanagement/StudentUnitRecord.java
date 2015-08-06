@@ -34,11 +34,15 @@ public class StudentUnitRecord implements IStudentUnitRecord {
   // Standard setter for assignment 1 but the argument passed must be greater
   // than zero and also less than the total weight of the assignment.
   public void setAsg1(float assignment1) {
-    if (assignment1 < 0 || 
-        assignment1 > UnitManager.UM().getUnit(this.unitCode_).getAsg1Weight()) {
+    // The following boolean and if structure is in conjunction with standard 53.
+    boolean isInvalid = (assignment1 < 0) || 
+                        (assignment1 > UnitManager.UM().
+                         getUnit(this.unitCode_).getAsg1Weight());
+    if (isInvalid) {
       throw new RuntimeException("Mark cannot be less than zero," +
                                  " or greater than assessment weight");
     }
+    
     this.assignmentOneResult_ = assignment1;
   }
 
@@ -51,11 +55,15 @@ public class StudentUnitRecord implements IStudentUnitRecord {
   // Standard setter for assignment 2 but the argument passed must be greater
   // than zero and also less than the total weight of the assignment.
   public void setAsg2(float assignment2) {
-    if (assignment2 < 0 || 
-        assignment2 > UnitManager.UM().getUnit(this.unitCode_).getAsg2Weight()) {
+    // The following boolean and if structure is in conjunction with standard 53.
+    boolean isInvalid = (assignment2 < 0) ||
+                        (assignment2 > UnitManager.UM().
+                         getUnit(this.unitCode_).getAsg2Weight());
+    if (isInvalid) {
       throw new RuntimeException("Mark cannot be less than zero," +
                                  " or greater than assessment weight");
     }
+    
     this.assignmentTwoResult_ = assignment2;
   }
 
@@ -68,11 +76,15 @@ public class StudentUnitRecord implements IStudentUnitRecord {
   // Standard setter for the exam mark but the argument passed must be greater
   // than zero and also less than the total weight of the exam.
   public void setExam(float exam) {
-    if (exam < 0 || 
-        exam > UnitManager.UM().getUnit(this.unitCode_).getExamWeight()) {
+    // The following boolean and if structure is in conjunction with standard 53.
+    boolean isInvalid = (exam < 0) ||
+                        (exam > UnitManager.UM().
+                         getUnit(this.unitCode_).getExamWeight());
+    if (isInvalid) {
       throw new RuntimeException("Mark cannot be less than zero," +
                                  " or greater than assessment weight");
     }
+    
     this.examResult_ = exam;
   }
 
@@ -86,7 +98,6 @@ public class StudentUnitRecord implements IStudentUnitRecord {
   // plus the final exam.
   public float getTotal() {
     return this.assignmentOneResult_ + this.assignmentTwoResult_ + this.examResult_;
-
   }
   
 }
