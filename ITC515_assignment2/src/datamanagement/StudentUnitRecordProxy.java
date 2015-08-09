@@ -8,7 +8,7 @@ public class StudentUnitRecordProxy implements IStudentUnitRecord {
 	public StudentUnitRecordProxy(Integer studentIdentification, String subjectCode) {
 		this.studentIdentification__ = studentIdentification;
 		this.subjectCode__ = subjectCode;
-		this.studentUnitManager__ = StudentUnitRecordManager.instance();
+		this.studentUnitManager__ = StudentUnitRecordManager.getStudentUnitRecordManager();
 	}
 
 	public Integer getStudentID() {

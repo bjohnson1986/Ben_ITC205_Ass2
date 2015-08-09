@@ -44,7 +44,7 @@ public class UnitManager {
 								i.getAttributeValue("asg1wgt")).intValue(), Integer.valueOf(
 								i.getAttributeValue("asg2wgt")).intValue(), Integer.valueOf(
 								i.getAttributeValue("examwgt")).intValue(),
-						StudentUnitRecordManager.instance().getRecordsByUnit(subjectUnitCode));
+						StudentUnitRecordManager.getStudentUnitRecordManager().getRecordsByUnit(subjectUnitCode));
 				unitMap__.put(subject.getUnitCode(), subject);
 				return subject;
 			}
