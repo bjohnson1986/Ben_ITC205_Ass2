@@ -1,2 +1,6 @@
 package datamanagement;
-public class UnitMap extends java.util.HashMap<String,IUnit> {}
+
+@SuppressWarnings("serial")
+public class UnitMap extends java.util.HashMap<String,IUnit> {
+	
+}
