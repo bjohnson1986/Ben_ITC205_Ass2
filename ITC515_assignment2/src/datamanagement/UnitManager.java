@@ -30,7 +30,7 @@ public class UnitManager {
 
 		IUnit subject;
 
-		for (Element i : (List<Element>) XMLManager.getXML().getDocument()
+		for (Element i : (List<Element>) XmlManager.getXML().getDocument()
 				.getRootElement().getChild("unitTable").getChildren("unit"))
 			if (subjectUnitCode.equals(i.getAttributeValue("uid"))) {
 
@@ -59,7 +59,7 @@ public class UnitManager {
 		IUnit subject;
 
 		unitMap = new UnitMap();
-		for (Element j : (List<Element>) XMLManager.getXML().getDocument()
+		for (Element j : (List<Element>) XmlManager.getXML().getDocument()
 				.getRootElement().getChild("unitTable").getChildren("unit")) {
 			subject = new UnitProxy(j.getAttributeValue("uid"),
 					j.getAttributeValue("name"));
