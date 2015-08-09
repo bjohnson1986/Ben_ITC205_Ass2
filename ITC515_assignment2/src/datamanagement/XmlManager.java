@@ -9,21 +9,9 @@ import org.jdom.output.XMLOutputter;
 import java.io.IOException;
 import java.io.FileWriter;
 
-
-//Comments to add file
-//
-//
-//Ben knows why it is called Git BASH
-
 public class XmlManager {
 	private static XmlManager self = null;
 	private Document xmldocument;
-	private int i;
-//Comments to add file
-//
-//
-//Ben knows why it is called Git BASH
-	
 	
 	public static XmlManager getXML() {
 		if (self == null)
