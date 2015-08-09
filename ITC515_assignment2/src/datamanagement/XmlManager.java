@@ -10,13 +10,13 @@ import java.io.IOException;
 import java.io.FileWriter;
 
 public class XmlManager {
-	private static XmlManager self = null;
-	private Document xmldocument;
+	private static XmlManager self__ = null;
+	private Document xmlDocument__;
 	
 	public static XmlManager getXML() {
-		if (self == null)
-			self = new XmlManager();
-		return self;
+		if (self__ == null)
+			self__ = new XmlManager();
+		return self__;
 	}
 
 	private XmlManager() {
@@ -30,7 +30,7 @@ public class XmlManager {
 		try {
 			SAXBuilder saxInstance = new SAXBuilder();
 			saxInstance.setExpandEntities(true);
-			xmldocument = saxInstance.build(text);
+			xmlDocument__ = saxInstance.build(text);
 		}
 
 		catch (JDOMException exception) {
@@ -45,7 +45,7 @@ public class XmlManager {
 	}
 
 	public Document getDocument() {
-		return xmldocument;
+		return xmlDocument__;
 	}
 
 	public void saveDocument() {
@@ -53,7 +53,7 @@ public class XmlManager {
 				.getProperty("XMLFILE");
 		try (FileWriter fout = new FileWriter(xmlfile)) {
 			XMLOutputter outputter = new XMLOutputter(Format.getPrettyFormat());
-			outputter.output(xmldocument, fout);
+			outputter.output(xmlDocument__, fout);
 			fout.close();
 		} catch (IOException ioException) {
 			System.err.printf("%s\n",

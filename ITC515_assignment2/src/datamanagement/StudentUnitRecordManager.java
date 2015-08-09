@@ -5,26 +5,26 @@ import org.jdom.*;
 
 public class StudentUnitRecordManager {
 
-	private static StudentUnitRecordManager unitPerStudentRecordManager = null;
-	private StudentUnitRecordMap recordByStudentAndSubject;
-	private java.util.HashMap<String, StudentUnitRecordList> unitPerStudentSubjectCode;
-	private java.util.HashMap<Integer, StudentUnitRecordList> unitPerStudentStudentIdentification;
+	private static StudentUnitRecordManager unitPerStudentRecordManager__ = null;
+	private StudentUnitRecordMap recordByStudentAndSubject__;
+	private java.util.HashMap<String, StudentUnitRecordList> unitPerStudentSubjectCode__;
+	private java.util.HashMap<Integer, StudentUnitRecordList> unitPerStudentStudentIdentification__;
 
 	public static StudentUnitRecordManager instance() {
-		if (unitPerStudentRecordManager == null)
-			unitPerStudentRecordManager = new StudentUnitRecordManager();
-		return unitPerStudentRecordManager;
+		if (unitPerStudentRecordManager__ == null)
+			unitPerStudentRecordManager__ = new StudentUnitRecordManager();
+		return unitPerStudentRecordManager__;
 	}
 
 	private StudentUnitRecordManager() {
-		recordByStudentAndSubject = new StudentUnitRecordMap();
-		unitPerStudentSubjectCode = new java.util.HashMap<>();
-		unitPerStudentStudentIdentification = new java.util.HashMap<>();
+		recordByStudentAndSubject__ = new StudentUnitRecordMap();
+		unitPerStudentSubjectCode__ = new java.util.HashMap<>();
+		unitPerStudentStudentIdentification__ = new java.util.HashMap<>();
 	}
 
 	public IStudentUnitRecord getStudentUnitRecord(Integer studentID,
 			String unitCode) {
-		IStudentUnitRecord studentPerUnit = recordByStudentAndSubject.get(studentID.toString() + unitCode);
+		IStudentUnitRecord studentPerUnit = recordByStudentAndSubject__.get(studentID.toString() + unitCode);
 		return studentPerUnit != null ? studentPerUnit : createStudentUnitRecord(studentID, unitCode);
 	}
 
@@ -39,7 +39,7 @@ public class StudentUnitRecordManager {
 						new Float(i.getAttributeValue("asg1")).floatValue(), new Float(
 								i.getAttributeValue("asg2")).floatValue(), new Float(
 								i.getAttributeValue("exam")).floatValue());
-				recordByStudentAndSubject.put(newStudentPerUnit.getStudentID().toString() + newStudentPerUnit.getUnitCode(), newStudentPerUnit);
+				recordByStudentAndSubject__.put(newStudentPerUnit.getStudentID().toString() + newStudentPerUnit.getUnitCode(), newStudentPerUnit);
 				return newStudentPerUnit;
 			}
 		}
@@ -49,7 +49,7 @@ public class StudentUnitRecordManager {
 
 	@SuppressWarnings("unchecked")
 	public StudentUnitRecordList getRecordsByUnit(String unitCode) {
-		StudentUnitRecordList unitRecord = unitPerStudentSubjectCode.get(unitCode);
+		StudentUnitRecordList unitRecord = unitPerStudentSubjectCode__.get(unitCode);
 		if (unitRecord != null)
 			return unitRecord;
 		unitRecord = new StudentUnitRecordList();
@@ -61,13 +61,13 @@ public class StudentUnitRecordManager {
 						.getAttributeValue("sid")), el.getAttributeValue("uid")));
 		}
 		if (unitRecord.size() > 0)
-			unitPerStudentSubjectCode.put(unitCode, unitRecord); // be careful - this could be empty
+			unitPerStudentSubjectCode__.put(unitCode, unitRecord); // be careful - this could be empty
 		return unitRecord;
 	}
 
 	@SuppressWarnings("unchecked")
 	public StudentUnitRecordList getRecordsByStudent(Integer studentID) {
-		StudentUnitRecordList studentRecord = unitPerStudentStudentIdentification.get(studentID);
+		StudentUnitRecordList studentRecord = unitPerStudentStudentIdentification__.get(studentID);
 		if (studentRecord != null)
 			return studentRecord;
 		studentRecord = new StudentUnitRecordList();
@@ -78,7 +78,7 @@ public class StudentUnitRecordManager {
 				studentRecord.add(new StudentUnitRecordProxy(new Integer(i
 						.getAttributeValue("sid")), i.getAttributeValue("uid")));
 		if (studentRecord.size() > 0)
-			unitPerStudentStudentIdentification.put(studentID, studentRecord); // be careful - this could be empty
+			unitPerStudentStudentIdentification__.put(studentID, studentRecord); // be careful - this could be empty
 		return studentRecord;
 	}
 
