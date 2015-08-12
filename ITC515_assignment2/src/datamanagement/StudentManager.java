@@ -108,7 +108,7 @@ public class StudentManager {
     StudentUnitRecordList unitRecords = StudentUnitRecordManager.instance()
                                         .getRecordsByUnit(unitCode);
     for (IStudentUnitRecord student : unitRecords) {
-      iStudent = createStudentProxy(new Integer(student.getStudentIdentification()));
+      iStudent = createStudentProxy(new Integer(student.getStudentId()));
       studentMap.put(iStudent.getID(), iStudent);
     }
     studentsToUnitsMap_.put(unitCode, studentMap);

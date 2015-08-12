@@ -17,11 +17,11 @@ public class StudentUnitRecord implements IStudentUnitRecord {
     this.unitCode_ = unitCode;
     this.setAssignment1(assignment1);
     this.setAssignment2(assignment2);
-    this.setExamMark(exam);
+    this.setExam(exam);
   }
 
   
-  public Integer getStudentIdentification() {
+  public Integer getStudentId() {
     return this.studentId_;
   }
 
@@ -75,7 +75,7 @@ public class StudentUnitRecord implements IStudentUnitRecord {
   
   // Standard setter for the exam mark but the argument passed must be greater
   // than zero and also less than the total weight of the exam.
-  public void setExamMark(float exam) {
+  public void setExam(float exam) {
     // The following boolean and if structure is in conjunction with standard 53.
     boolean isInvalid = (exam < 0) ||
                         (exam > UnitManager.UM().
@@ -89,14 +89,14 @@ public class StudentUnitRecord implements IStudentUnitRecord {
   }
 
   
-  public float getExamMark() {
+  public float getExam() {
     return this.examResult_;
   }
 
   
   // The method getTotal will return the total marks of each assignment,
   // plus the final exam.
-  public float getTotalMark() {
+  public float getTotal() {
     return this.assignmentOneResult_ + this.assignmentTwoResult_ + this.examResult_;
   }
   
