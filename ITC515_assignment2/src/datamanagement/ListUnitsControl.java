@@ -1,12 +1,13 @@
 package datamanagement;
 
-public class ListUnitsCTL {
+public class ListUnitsControl {
   
   private UnitManager unitManager_;
 
+  
   // Constructor for the ListUnitsCTL class. It retrieves
   // the UnitManager instance.
-  public ListUnitsCTL() {
+  public ListUnitsControl() {
     unitManager_ = UnitManager.UM();
   }
   
@@ -17,8 +18,8 @@ public class ListUnitsCTL {
     unitLister.clearUnits();
     
     UnitMap units = unitManager_.getUnits();
-    for (String s : units.keySet()) {
-      unitLister.addUnit(units.get(s));
+    for (String unitCode : units.keySet()) {
+      unitLister.addUnit(units.get(unitCode));
     }
   }
   

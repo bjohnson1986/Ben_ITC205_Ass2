@@ -57,9 +57,9 @@ public class Student implements IStudent {
   // returns the entire unit record list, rather it returns one unit
   // record, if it exists, based on a passed unit code.
   public IStudentUnitRecord getUnitRecord(String unitCode) {
-    for (IStudentUnitRecord r : studentUnitRecordList_) {
-      if (r.getUnitCode().equals(unitCode)) {
-        return r;
+    for (IStudentUnitRecord record : studentUnitRecordList_) {
+      if (record.getUnitCode().equals(unitCode)) {
+        return record;
       }
     }
 

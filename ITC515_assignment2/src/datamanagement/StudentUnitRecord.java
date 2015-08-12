@@ -15,13 +15,13 @@ public class StudentUnitRecord implements IStudentUnitRecord {
                            float assignment2, float exam) {
     this.studentId_ = id;
     this.unitCode_ = unitCode;
-    this.setAsg1(assignment1);
-    this.setAsg2(assignment2);
-    this.setExam(exam);
+    this.setAssignment1(assignment1);
+    this.setAssignment2(assignment2);
+    this.setExamMark(exam);
   }
 
   
-  public Integer getStudentID() {
+  public Integer getStudentIdentification() {
     return this.studentId_;
   }
 
@@ -33,7 +33,7 @@ public class StudentUnitRecord implements IStudentUnitRecord {
   
   // Standard setter for assignment 1 but the argument passed must be greater
   // than zero and also less than the total weight of the assignment.
-  public void setAsg1(float assignment1) {
+  public void setAssignment1(float assignment1) {
     // The following boolean and if structure is in conjunction with standard 53.
     boolean isInvalid = (assignment1 < 0) || 
                         (assignment1 > UnitManager.UM().
@@ -47,14 +47,14 @@ public class StudentUnitRecord implements IStudentUnitRecord {
   }
 
   
-  public float getAsg1() {
+  public float getAssignment1() {
     return this.assignmentOneResult_;
   }
 
   
   // Standard setter for assignment 2 but the argument passed must be greater
   // than zero and also less than the total weight of the assignment.
-  public void setAsg2(float assignment2) {
+  public void setAssignment2(float assignment2) {
     // The following boolean and if structure is in conjunction with standard 53.
     boolean isInvalid = (assignment2 < 0) ||
                         (assignment2 > UnitManager.UM().
@@ -68,14 +68,14 @@ public class StudentUnitRecord implements IStudentUnitRecord {
   }
 
   
-  public float getAsg2() {
+  public float getAssignment2() {
     return this.assignmentTwoResult_;
   }
 
   
   // Standard setter for the exam mark but the argument passed must be greater
   // than zero and also less than the total weight of the exam.
-  public void setExam(float exam) {
+  public void setExamMark(float exam) {
     // The following boolean and if structure is in conjunction with standard 53.
     boolean isInvalid = (exam < 0) ||
                         (exam > UnitManager.UM().
@@ -89,14 +89,14 @@ public class StudentUnitRecord implements IStudentUnitRecord {
   }
 
   
-  public float getExam() {
+  public float getExamMark() {
     return this.examResult_;
   }
 
   
   // The method getTotal will return the total marks of each assignment,
   // plus the final exam.
-  public float getTotal() {
+  public float getTotalMark() {
     return this.assignmentOneResult_ + this.assignmentTwoResult_ + this.examResult_;
   }
   

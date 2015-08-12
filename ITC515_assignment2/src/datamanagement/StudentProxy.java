@@ -14,7 +14,7 @@ public class StudentProxy implements IStudent {
     this.identification_ = id;
     this.firstName_ = firstName;
     this.lastName_ = lastName;
-    this.studentManager_ = StudentManager.get();
+    this.studentManager_ = StudentManager.getInstance();
   }
 
   

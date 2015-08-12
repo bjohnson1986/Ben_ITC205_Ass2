@@ -1,13 +1,14 @@
 package datamanagement;
 
-public class ListStudentsCTL {
+public class ListStudentsControl {
   
   private StudentManager studentManager_;
 
+  
   // Constructor for the ListStudentsCTL class. It retrieves the
   // StudentManager instance.
-  public ListStudentsCTL() {
-    studentManager_ = StudentManager.get();
+  public ListStudentsControl() {
+    studentManager_ = StudentManager.getInstance();
   }
 
   
