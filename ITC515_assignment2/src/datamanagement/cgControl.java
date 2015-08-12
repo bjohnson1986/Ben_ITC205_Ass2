@@ -1,100 +1,100 @@
 package datamanagement;
 
-public class cgCTL {
+public class cgControl {
 
-	cgUI CGUI;
-	String cuc = null;
+	cgUI cgUI;
+	String coureCode = null;
 	Integer currentStudentID = null;
 	boolean changed = false;
 
-	public cgCTL() {
+	public cgControl() {
 	}
 
 	public void execute() {
-		CGUI = new cgUI(this);
-		CGUI.setState1(false);
+		cgUI = new cgUI(this);
+		cgUI.setUnitActive(false);
 
-		CGUI.setState2(false);
-		CGUI.setState3(false);
-		CGUI.setState4(false);
-		CGUI.setState5(false);
-		CGUI.setState6(false);
-		CGUI.Refresh3();
+		cgUI.setStudentActive(false);
+		cgUI.setMarksActive(false);
+		cgUI.setChangeButtonActive(false);
+		cgUI.setMarkEditable(false);
+		cgUI.setGradeDisplayed(false);
+		cgUI.refreshWindow();
 
 		ListUnitsCTL luCTL = new ListUnitsCTL();
-		luCTL.listUnits(CGUI);
-		CGUI.setVisible(true);
-		CGUI.setState1(true);
+		luCTL.listUnits(cgUI);
+		cgUI.setVisible(true);
+		cgUI.setUnitActive(true);
 	}
 
 	public void unitSelected(String code) {
 
 		if (code.equals("NONE"))
-			CGUI.setState2(false);
+			cgUI.setStudentActive(false);
 		else {
 			ListStudentsCTL lsCTL = new ListStudentsCTL();
-			lsCTL.listStudents(CGUI, code);
-			cuc = code;
-			CGUI.setState2(true);
+			lsCTL.listStudents(cgUI, code);
+			coureCode = code;
+			cgUI.setStudentActive(true);
 		}
-		CGUI.setState3(false);
+		cgUI.setMarksActive(false);
 	}
 
 	public void studentSelected(Integer id) {
 		currentStudentID = id;
 		if (currentStudentID.intValue() == 0) {
-			CGUI.Refresh3();
-			CGUI.setState3(false);
-			CGUI.setState4(false);
-			CGUI.setState5(false);
-			CGUI.setState6(false);
+			cgUI.refreshWindow();
+			cgUI.setMarksActive(false);
+			cgUI.setChangeButtonActive(false);
+			cgUI.setMarkEditable(false);
+			cgUI.setGradeDisplayed(false);
 		}
 
 		else {
 			IStudent s = StudentManager.get().getStudent(id);
 
-			IStudentUnitRecord r = s.getUnitRecord(cuc);
+			IStudentUnitRecord r = s.getUnitRecord(coureCode);
 
-			CGUI.setRecord(r);
-			CGUI.setState3(true);
-			CGUI.setState4(true);
-			CGUI.setState5(false);
-			CGUI.setState6(false);
+			cgUI.setRecord(r);
+			cgUI.setMarksActive(true);
+			cgUI.setChangeButtonActive(true);
+			cgUI.setMarkEditable(false);
+			cgUI.setGradeDisplayed(false);
 			changed = false;
 
 		}
 	}
 
 	public String checkGrade(float f, float g, float h) {
-		IUnit u = UnitManager.UM().getUnit(cuc);
+		IUnit u = UnitManager.UM().getUnit(coureCode);
 		String s = u.getGrade(f, g, h);
-		CGUI.setState4(true);
-		CGUI.setState5(false);
+		cgUI.setChangeButtonActive(true);
+		cgUI.setMarkEditable(false);
 		if (changed) {
-			CGUI.setState6(true);
+			cgUI.setGradeDisplayed(true);
 		}
 		return s;
 	}
 
 	public void enableChangeMarks() {
-		CGUI.setState4(false);
-		CGUI.setState6(false);
-		CGUI.setState5(true);
+		cgUI.setChangeButtonActive(false);
+		cgUI.setGradeDisplayed(false);
+		cgUI.setMarkEditable(true);
 		changed = true;
 	}
 
 	public void saveGrade(float asg1, float asg2, float exam) {
 
-		IUnit u = UnitManager.UM().getUnit(cuc);
+		IUnit u = UnitManager.UM().getUnit(coureCode);
 		IStudent s = StudentManager.get().getStudent(currentStudentID);
 
-		IStudentUnitRecord r = s.getUnitRecord(cuc);
+		IStudentUnitRecord r = s.getUnitRecord(coureCode);
 		r.setAsg1(asg1);
 		r.setAsg2(asg2);
 		r.setExam(exam);
 		StudentUnitRecordManager.instance().saveRecord(r);
-		CGUI.setState4(true);
-		CGUI.setState5(false);
-		CGUI.setState6(false);
+		cgUI.setChangeButtonActive(true);
+		cgUI.setMarkEditable(false);
+		cgUI.setGradeDisplayed(false);
 	}
 }
