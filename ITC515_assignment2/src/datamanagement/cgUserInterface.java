@@ -386,7 +386,7 @@ public class cgUserInterface extends javax.swing.JFrame implements IUnitLister,
 	}
 
 	public void addStudent(IStudent student) {
-		studentComboBox.addElement(student.getID().toString() + " : "
+		studentComboBox.addElement(student.getId().toString() + " : "
 				+ student.getFirstName() + " " + student.getLastName());
 	}
 
