@@ -10,6 +10,7 @@ public class cgControl {
 	public cgControl() {
 	}
 	
+	
 	// This code runs on execution of the program and sets up the
 	// GUI.
 	public void execute() {
@@ -92,15 +93,14 @@ public class cgControl {
 	
 
 	public void saveGrade(float assignment1, float assignment2, float exam) {
+		IUnit unit = UnitManager.UM().getUnit(coureCode);
+		IStudent student = StudentManager.get().getStudent(currentStudentID);
 
-		IUnit u = UnitManager.UM().getUnit(coureCode);
-		IStudent s = StudentManager.get().getStudent(currentStudentID);
-
-		IStudentUnitRecord r = s.getUnitRecord(coureCode);
-		r.setAsg1(assignment1);
-		r.setAsg2(assignment2);
-		r.setExam(exam);
-		StudentUnitRecordManager.instance().saveRecord(r);
+		IStudentUnitRecord record = student.getUnitRecord(coureCode);
+		record.setAssignment1(assignment1);
+		record.setAssignment1(assignment2);
+		record.setExam(exam);
+		StudentUnitRecordManager.instance().saveRecord(record);
 		cgUI.setChangeButtonActive(true);
 		cgUI.setMarkEditable(false);
 		cgUI.setGradeDisplayed(false);
