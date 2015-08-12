@@ -2,7 +2,7 @@ package datamanagement;
 
 public interface IStudentUnitRecord {
 
-    public Integer getStudentID();
+    public Integer getStudentId();
     public String getUnitCode();
 
     public void setAssignment1(float mark);
