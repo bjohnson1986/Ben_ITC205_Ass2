@@ -2,16 +2,18 @@ package datamanagement;
 
 public class cgControl {
 
-	cgUI cgUI;
+	cgUserInterface cgUI;
 	String coureCode = null;
 	Integer currentStudentID = null;
 	boolean changed = false;
 
 	public cgControl() {
 	}
-
+	
+	// This code runs on execution of the program and sets up the
+	// GUI.
 	public void execute() {
-		cgUI = new cgUI(this);
+		cgUI = new cgUserInterface(this);
 		cgUI.setUnitActive(false);
 
 		cgUI.setStudentActive(false);
@@ -26,11 +28,13 @@ public class cgControl {
 		cgUI.setVisible(true);
 		cgUI.setUnitActive(true);
 	}
+	
 
 	public void unitSelected(String code) {
 
-		if (code.equals("NONE"))
+		if (code.equals("NONE")) {
 			cgUI.setStudentActive(false);
+		}
 		else {
 			ListStudentsCTL lsCTL = new ListStudentsCTL();
 			lsCTL.listStudents(cgUI, code);
@@ -39,6 +43,7 @@ public class cgControl {
 		}
 		cgUI.setMarksActive(false);
 	}
+	
 
 	public void studentSelected(Integer id) {
 		currentStudentID = id;
@@ -64,10 +69,11 @@ public class cgControl {
 
 		}
 	}
+	
 
-	public String checkGrade(float f, float g, float h) {
-		IUnit u = UnitManager.UM().getUnit(coureCode);
-		String s = u.getGrade(f, g, h);
+	public String checkGrade(float assignment1Grade, float assignment2Grade, float examGrade) {
+		IUnit unit = UnitManager.UM().getUnit(coureCode);
+		String s = unit.getGrade(assignment1Grade, assignment2Grade, examGrade);
 		cgUI.setChangeButtonActive(true);
 		cgUI.setMarkEditable(false);
 		if (changed) {
@@ -75,6 +81,7 @@ public class cgControl {
 		}
 		return s;
 	}
+	
 
 	public void enableChangeMarks() {
 		cgUI.setChangeButtonActive(false);
@@ -82,15 +89,16 @@ public class cgControl {
 		cgUI.setMarkEditable(true);
 		changed = true;
 	}
+	
 
-	public void saveGrade(float asg1, float asg2, float exam) {
+	public void saveGrade(float assignment1, float assignment2, float exam) {
 
 		IUnit u = UnitManager.UM().getUnit(coureCode);
 		IStudent s = StudentManager.get().getStudent(currentStudentID);
 
 		IStudentUnitRecord r = s.getUnitRecord(coureCode);
-		r.setAsg1(asg1);
-		r.setAsg2(asg2);
+		r.setAsg1(assignment1);
+		r.setAsg2(assignment2);
 		r.setExam(exam);
 		StudentUnitRecordManager.instance().saveRecord(r);
 		cgUI.setChangeButtonActive(true);
