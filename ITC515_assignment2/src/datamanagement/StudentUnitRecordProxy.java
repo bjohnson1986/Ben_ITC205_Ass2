@@ -18,7 +18,7 @@ public class StudentUnitRecordProxy implements IStudentUnitRecord {
 	}
 	
 	
-	public String getUnitCode() {
+	public String getSubjectCode() {
 		return subjectCode__;
 	}
 	
@@ -59,8 +59,8 @@ public class StudentUnitRecordProxy implements IStudentUnitRecord {
 	}
 
 		
-	public float getTotal() {
+	public float getTotalMarks() {
 		return studentUnitManager__.getStudentUnitRecord(studentIdentification__,
-				subjectCode__).getTotal();
+				subjectCode__).getTotalMarks();
 	}
 }
