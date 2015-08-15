@@ -12,15 +12,14 @@ public class XmlManager {
 	private static XmlManager self__ = null;
 	private Document xmlDocument__;
 
-	public static XmlManager getXML() {
+	public static XmlManager getXml() {
 		if (self__ == null)
 			self__ = new XmlManager();
 		return self__;
 	}
 
 	private XmlManager() {
-		String text = AppProperties.getInstance().getProperties()
-				.getProperty("XMLFILE");
+		String text = AppProperties.getInstance().getProperties().getProperty("XMLFILE");
 		try {
 			SAXBuilder saxInstance = new SAXBuilder();
 			saxInstance.setExpandEntities(true);
