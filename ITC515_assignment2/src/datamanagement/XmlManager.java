@@ -12,14 +12,13 @@ import java.io.FileWriter;
 public class XmlManager {
 	private static XmlManager self__ = null;
 	private Document xmlDocument__;
-	
+
 	public static XmlManager getXML() {
 		if (self__ == null)
 			self__ = new XmlManager();
 		return self__;
 	}
-	
-	
+
 	private XmlManager() {
 		String text = AppProperties.getInstance().getProperties()
 				.getProperty("XMLFILE");
@@ -27,8 +26,7 @@ public class XmlManager {
 			SAXBuilder saxInstance = new SAXBuilder();
 			saxInstance.setExpandEntities(true);
 			xmlDocument__ = saxInstance.build(text);
-		}
-		catch (JDOMException exception) {
+		} catch (JDOMException exception) {
 			System.err.printf("%s",
 					"DBMD: XMLManager : init : caught JDOMException\n");
 			throw new RuntimeException("DBMD: XMLManager : init : JDOMException");
@@ -39,14 +37,10 @@ public class XmlManager {
 		}
 	}
 
-	
-
 	public Document getDocument() {
 		return xmlDocument__;
 	}
 
-	
-	
 	public void saveDocument() {
 		String xmlfile = AppProperties.getInstance().getProperties()
 				.getProperty("XMLFILE");
@@ -54,8 +48,7 @@ public class XmlManager {
 			XMLOutputter outputter = new XMLOutputter(Format.getPrettyFormat());
 			outputter.output(xmlDocument__, fout);
 			fout.close();
-		} 
-		catch (IOException ioException) {
+		} catch (IOException ioException) {
 			System.err.printf("%s\n",
 					"DBMD : XMLManager : saveDocument : Error saving XML to " + xmlfile);
 			throw new RuntimeException(
