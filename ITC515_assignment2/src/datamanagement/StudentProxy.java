@@ -18,7 +18,7 @@ public class StudentProxy implements IStudent {
   }
 
   
-  public Integer getID() {
+  public Integer getId() {
     return this.identification_;
   }
 

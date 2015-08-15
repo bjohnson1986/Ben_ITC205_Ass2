@@ -21,7 +21,7 @@ public class Student implements IStudent {
   }
 
 
-  public Integer getID() {
+  public Integer getId() {
     return this.identification_;
   }
 

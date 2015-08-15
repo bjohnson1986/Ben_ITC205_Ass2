@@ -36,8 +36,8 @@ public class StudentUnitRecord implements IStudentUnitRecord {
   public void setAssignment1(float assignment1) {
     // The following boolean and if structure is in conjunction with standard 53.
     boolean isInvalid = (assignment1 < 0) || 
-                        (assignment1 > UnitManager.UM().
-                         getUnit(this.unitCode_).getAsg1Weight());
+                        (assignment1 > UnitManager.getUnitManager().
+                         getUnit(this.unitCode_).getAssignment1Weight());
     if (isInvalid) {
       throw new RuntimeException("Mark cannot be less than zero," +
                                  " or greater than assessment weight");
@@ -57,8 +57,8 @@ public class StudentUnitRecord implements IStudentUnitRecord {
   public void setAssignment2(float assignment2) {
     // The following boolean and if structure is in conjunction with standard 53.
     boolean isInvalid = (assignment2 < 0) ||
-                        (assignment2 > UnitManager.UM().
-                         getUnit(this.unitCode_).getAsg2Weight());
+                        (assignment2 > UnitManager.getUnitManager().
+                         getUnit(this.unitCode_).getAssignment2Weight());
     if (isInvalid) {
       throw new RuntimeException("Mark cannot be less than zero," +
                                  " or greater than assessment weight");
@@ -78,7 +78,7 @@ public class StudentUnitRecord implements IStudentUnitRecord {
   public void setExam(float exam) {
     // The following boolean and if structure is in conjunction with standard 53.
     boolean isInvalid = (exam < 0) ||
-                        (exam > UnitManager.UM().
+                        (exam > UnitManager.getUnitManager().
                          getUnit(this.unitCode_).getExamWeight());
     if (isInvalid) {
       throw new RuntimeException("Mark cannot be less than zero," +

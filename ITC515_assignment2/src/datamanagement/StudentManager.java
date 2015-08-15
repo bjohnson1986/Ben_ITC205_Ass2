@@ -47,7 +47,7 @@ public class StudentManager {
   // If there is no match, it will return null.
   @SuppressWarnings("unchecked")
   private Element getStudentElement(Integer id) {
-    for (Element element : (List<Element>) XMLManager.getXML().getDocument()
+    for (Element element : (List<Element>) XmlManager.getXML().getDocument()
         .getRootElement().getChild("studentTable").getChildren("student")) {
       if (id.toString().equals(element.getAttributeValue("sid"))) {
         return element;
@@ -70,7 +70,7 @@ public class StudentManager {
       iStudent = new Student(new Integer(element.getAttributeValue("sid")),
                              element.getAttributeValue("fname"), 
                              element.getAttributeValue("lname"), recordList);
-      studentMap_.put(iStudent.getID(), iStudent);
+      studentMap_.put(iStudent.getId(), iStudent);
       return iStudent;
     }
     
@@ -106,10 +106,10 @@ public class StudentManager {
     studentMap = new StudentMap();
     IStudent iStudent;
     StudentUnitRecordList unitRecords = StudentUnitRecordManager.instance()
-                                        .getRecordsByUnit(unitCode);
+                                        .getRecordsBySubject(unitCode);
     for (IStudentUnitRecord student : unitRecords) {
       iStudent = createStudentProxy(new Integer(student.getStudentId()));
-      studentMap.put(iStudent.getID(), iStudent);
+      studentMap.put(iStudent.getId(), iStudent);
     }
     studentsToUnitsMap_.put(unitCode, studentMap);
     
