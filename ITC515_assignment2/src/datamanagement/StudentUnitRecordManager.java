@@ -25,6 +25,7 @@ public class StudentUnitRecordManager {
 
 
 	//Accessor method to return StudentUnitRecord. 
+
 	public IStudentUnitRecord getStudentUnitRecord(Integer studentIdentification, String subjectCode) {
 		IStudentUnitRecord studentPerUnit  = studentMap__.get(studentIdentification.toString() + subjectCode);
 		return studentPerUnit  != null ? studentPerUnit  : setStudentUnitRecord(studentIdentification, subjectCode);
@@ -86,7 +87,8 @@ public class StudentUnitRecordManager {
 		return studentRecord;
 	}
 
-	//Save changes to the XML database.
+
+//Save to external XML database.
 	@SuppressWarnings("unchecked")
 	public void saveRecord(IStudentUnitRecord student) {
 		for (Element element : (List<Element>) XmlManager.getXML().getDocument().getRootElement().getChild("studentUnitRecordTable").getChildren("record")) {
