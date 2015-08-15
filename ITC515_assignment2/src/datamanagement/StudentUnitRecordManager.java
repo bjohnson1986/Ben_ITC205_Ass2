@@ -121,7 +121,6 @@ public class StudentUnitRecordManager {
 				XmlManager.getXML().saveDocument(); // write out the XML file for continuous save.																		
 			}
 		}
-
 		throw new RuntimeException(
 				"DBMD: saveRecord : no such student record in data");
 	}
