@@ -1,20 +1,20 @@
 package datamanagement;
 
-public class cgControl {
+public class CheckGradeControl {
 
-	cgUserInterface cgUI;
+	CheckGradeUserInterface cgUI;
 	String coureCode = null;
 	Integer currentStudentID = null;
 	boolean changed = false;
 
-	public cgControl() {
+	public CheckGradeControl() {
 	}
 	
 	
 	// This code runs on execution of the program and sets up the
 	// GUI.
 	public void execute() {
-		cgUI = new cgUserInterface(this);
+		cgUI = new CheckGradeUserInterface(this);
 		cgUI.setUnitActive(false);
 
 		cgUI.setStudentActive(false);
@@ -57,7 +57,7 @@ public class cgControl {
 		}
 
 		else {
-			IStudent s = StudentManager.get().getStudent(id);
+			IStudent s = StudentManager.getInstance().getStudent(id);
 
 			IStudentUnitRecord r = s.getUnitRecord(coureCode);
 
@@ -72,9 +72,11 @@ public class cgControl {
 	}
 	
 
-	public String checkGrade(float assignment1Grade, float assignment2Grade, float examGrade) {
+	public String checkGrade(float assignment1Grade, float assignment2Grade, 
+			float examGrade) {
 		IUnit unit = UnitManager.UM().getUnit(coureCode);
-		String s = unit.getGrade(assignment1Grade, assignment2Grade, examGrade);
+		String s = unit.getGrade(assignment1Grade, 
+				assignment2Grade, examGrade);
 		cgUI.setChangeButtonActive(true);
 		cgUI.setMarkEditable(false);
 		if (changed) {
@@ -94,13 +96,13 @@ public class cgControl {
 
 	public void saveGrade(float assignment1, float assignment2, float exam) {
 		IUnit unit = UnitManager.UM().getUnit(coureCode);
-		IStudent student = StudentManager.get().getStudent(currentStudentID);
+		IStudent student = StudentManager.getInstance().getStudent(currentStudentID);
 
 		IStudentUnitRecord record = student.getUnitRecord(coureCode);
 		record.setAssignment1(assignment1);
 		record.setAssignment1(assignment2);
 		record.setExam(exam);
-		StudentUnitRecordManager.instance().saveRecord(record);
+		StudentUnitRecordManager.getStudentUnitRecordManager().saveRecord(record);
 		cgUI.setChangeButtonActive(true);
 		cgUI.setMarkEditable(false);
 		cgUI.setGradeDisplayed(false);

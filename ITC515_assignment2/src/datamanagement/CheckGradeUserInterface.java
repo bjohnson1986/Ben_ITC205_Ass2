@@ -8,9 +8,9 @@ import java.awt.Color;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-public class cgUserInterface extends javax.swing.JFrame implements IUnitLister,
+public class CheckGradeUserInterface extends javax.swing.JFrame implements IUnitLister,
 		IStudentLister {
-	private cgControl cgControl;
+	private CheckGradeControl cgControl;
 	private javax.swing.DefaultComboBoxModel unitComboBox;
 	private javax.swing.DefaultComboBoxModel studentComboBox;
 	float assignment1Value;
@@ -18,7 +18,7 @@ public class cgUserInterface extends javax.swing.JFrame implements IUnitLister,
 	float examValue;
 	Integer studentId;
 
-	public cgUserInterface(cgControl ctl) {
+	public CheckGradeUserInterface(CheckGradeControl ctl) {
 		this.cgControl = ctl;
 		unitComboBox = new javax.swing.DefaultComboBoxModel(new String[0]);
 		studentComboBox = new javax.swing.DefaultComboBoxModel(new String[0]);
@@ -180,21 +180,27 @@ public class cgUserInterface extends javax.swing.JFrame implements IUnitLister,
 							.addContainerGap()
 							.addComponent(assignment1Label)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(assignment1TextField, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
+							.addComponent(assignment1TextField, 
+									GroupLayout.PREFERRED_SIZE, 
+									59, GroupLayout.PREFERRED_SIZE)
 							.addGap(18)
 							.addComponent(assignment2Label))
 						.addGroup(marksPanelLayout.createSequentialGroup()
 							.addGap(85)
-							.addComponent(changeButton, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(changeButton, GroupLayout.PREFERRED_SIZE, 
+									84, GroupLayout.PREFERRED_SIZE)))
 					.addGap(18)
 					.addGroup(marksPanelLayout.createParallelGroup(Alignment.TRAILING)
 						.addGroup(marksPanelLayout.createSequentialGroup()
-							.addComponent(assignment2TextField, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
+							.addComponent(assignment2TextField, 
+									GroupLayout.PREFERRED_SIZE, 
+									59, GroupLayout.PREFERRED_SIZE)
 							.addGap(18)
 							.addComponent(examLabel))
 						.addComponent(checkGradeButton))
 					.addGap(18)
-					.addComponent(examTextField, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
+					.addComponent(examTextField, GroupLayout.PREFERRED_SIZE, 59, 
+							GroupLayout.PREFERRED_SIZE)
 					.addGap(15))
 		);
 		marksPanelLayout.setVerticalGroup(
@@ -202,11 +208,14 @@ public class cgUserInterface extends javax.swing.JFrame implements IUnitLister,
 				.addGroup(marksPanelLayout.createSequentialGroup()
 					.addGroup(marksPanelLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(assignment1Label)
-						.addComponent(assignment1TextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(assignment1TextField, GroupLayout.PREFERRED_SIZE, 
+								GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(assignment2Label)
-						.addComponent(assignment2TextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(assignment2TextField, GroupLayout.PREFERRED_SIZE, 
+								GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(examLabel)
-						.addComponent(examTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(examTextField, GroupLayout.PREFERRED_SIZE, 
+								GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(marksPanelLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(changeButton)
@@ -256,23 +265,38 @@ public class cgUserInterface extends javax.swing.JFrame implements IUnitLister,
 					.addGroup(layout.createParallelGroup(Alignment.LEADING)
 						.addGroup(layout.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(errorLabel, GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE))
+							.addComponent(errorLabel, GroupLayout.DEFAULT_SIZE, 
+									400, Short.MAX_VALUE))
 						.addGroup(layout.createSequentialGroup()
 							.addContainerGap()
-							.addGroup(layout.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(marksPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addGroup(layout.createParallelGroup(Alignment.LEADING,
+									false)
+								.addComponent(marksPanel, GroupLayout.DEFAULT_SIZE, 
+										GroupLayout.DEFAULT_SIZE, 
+										Short.MAX_VALUE)
 								.addGroup(layout.createSequentialGroup()
-									.addGroup(layout.createParallelGroup(Alignment.LEADING)
-										.addComponent(unitPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addComponent(studentPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+									.addGroup(layout.createParallelGroup(
+											Alignment.LEADING)
+										.addComponent(unitPanel, 
+												GroupLayout.PREFERRED_SIZE, 
+												GroupLayout.DEFAULT_SIZE, 
+												GroupLayout.PREFERRED_SIZE)
+										.addComponent(studentPanel, 
+												GroupLayout.PREFERRED_SIZE, 
+												GroupLayout.DEFAULT_SIZE, 
+												GroupLayout.PREFERRED_SIZE))
 									.addGap(18)
-									.addComponent(gradePanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
+									.addComponent(gradePanel, 
+											GroupLayout.PREFERRED_SIZE, 
+											GroupLayout.DEFAULT_SIZE, 
+											GroupLayout.PREFERRED_SIZE))))
 						.addGroup(layout.createSequentialGroup()
 							.addGap(157)
 							.addComponent(titleLabel))
 						.addGroup(layout.createSequentialGroup()
 							.addGap(165)
-							.addComponent(saveButton, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(saveButton, GroupLayout.PREFERRED_SIZE, 
+									86, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap())
 		);
 		layout.setVerticalGroup(
@@ -283,16 +307,27 @@ public class cgUserInterface extends javax.swing.JFrame implements IUnitLister,
 					.addGap(13)
 					.addGroup(layout.createParallelGroup(Alignment.LEADING)
 						.addGroup(layout.createSequentialGroup()
-							.addComponent(unitPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(unitPanel, GroupLayout.PREFERRED_SIZE, 
+									GroupLayout.DEFAULT_SIZE, 
+									GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(studentPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addComponent(gradePanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addComponent(marksPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(studentPanel, GroupLayout.PREFERRED_SIZE, 
+									GroupLayout.DEFAULT_SIZE, 
+									GroupLayout.PREFERRED_SIZE))
+						.addComponent(gradePanel, GroupLayout.PREFERRED_SIZE, 
+								GroupLayout.DEFAULT_SIZE, 
+								GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED, 
+							GroupLayout.DEFAULT_SIZE, 
+							Short.MAX_VALUE)
+					.addComponent(marksPanel, GroupLayout.PREFERRED_SIZE, 
+							GroupLayout.DEFAULT_SIZE, 
+							GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(saveButton)
 					.addGap(11)
-					.addComponent(errorLabel, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+					.addComponent(errorLabel, GroupLayout.PREFERRED_SIZE, 30, 
+							GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
 		);
 		getContentPane().setLayout(layout);
