@@ -1,14 +1,14 @@
 package datamanagement;
 
 import java.util.List;
-import org.jdom.*;
+import org.jdom.Element;
 
 public class UnitManager {
 
 	private static UnitManager self__ = null;
 	private UnitMap unitMap__;
 
-	public static UnitManager UM() {
+	public static UnitManager getUnitManager() {
 		if (self__ == null)
 			self__ = new UnitManager();
 		
@@ -31,28 +31,23 @@ public class UnitManager {
 	@SuppressWarnings("unchecked")
 	private IUnit createUnit(String subjectUnitCode) {
 		IUnit subject;
-
-		for (Element element : (List<Element>) XmlManager.getXML().getDocument()
+		for (Element i : (List<Element>) XmlManager.getXml().getDocument()
 				.getRootElement().getChild("unitTable").getChildren("unit"))
-			if (subjectUnitCode.equals(element.getAttributeValue("uid"))) {
-
-				subject = new Unit(element.getAttributeValue("uid"),
-						element.getAttributeValue("name"), Float.valueOf(
-						element.getAttributeValue("ps")).floatValue(), Float.valueOf(
-						element.getAttributeValue("cr")).floatValue(), Float.valueOf(
-						element.getAttributeValue("di")).floatValue(), Float.valueOf(
-						element.getAttributeValue("hd")).floatValue(), Float.valueOf(
-						element.getAttributeValue("ae")).floatValue(), Integer.valueOf(
-						element.getAttributeValue("asg1wgt")).intValue(), Integer.valueOf(
-						element.getAttributeValue("asg2wgt")).intValue(), Integer.valueOf(
-						element.getAttributeValue("examwgt")).intValue(),
-						StudentUnitRecordManager.getStudentUnitRecordManager().getRecordsBySubject(subjectUnitCode));
-				
+			if (subjectUnitCode.equals(i.getAttributeValue("uid"))) {
+				subject = new Unit(i.getAttributeValue("uid"),
+						i.getAttributeValue("name"), Float.valueOf(
+						i.getAttributeValue("ps")).floatValue(), Float.valueOf(
+						i.getAttributeValue("cr")).floatValue(), Float.valueOf(
+						i.getAttributeValue("di")).floatValue(), Float.valueOf(
+						i.getAttributeValue("hd")).floatValue(), Float.valueOf(
+						i.getAttributeValue("ae")).floatValue(), Integer.valueOf(
+						i.getAttributeValue("asg1wgt")).intValue(), Integer.valueOf(
+						i.getAttributeValue("asg2wgt")).intValue(), Integer.valueOf(
+						i.getAttributeValue("examwgt")).intValue(),
+						StudentUnitRecordManager.getStudentUnitRecordManager().getRecordsBySubject(subjectUnitCode));	
 				unitMap__.put(subject.getSubjectCode(), subject);
-				
 				return subject;
 			}
-
 		throw new RuntimeException("DBMD: createUnit : unit not in file");
 	}
 	
@@ -64,10 +59,10 @@ public class UnitManager {
 		IUnit subject;
 		unitMap = new UnitMap();
 		
-		for (Element j : (List<Element>) XmlManager.getXML().getDocument()
+		for (Element i : (List<Element>) XmlManager.getXml().getDocument()
 				.getRootElement().getChild("unitTable").getChildren("unit")) {
-			subject = new UnitProxy(j.getAttributeValue("uid"),
-					j.getAttributeValue("name"));
+			subject = new UnitProxy(i.getAttributeValue("uid"),
+					i.getAttributeValue("name"));
 			unitMap.put(subject.getSubjectCode(), subject);
 		} // unit maps are filled with PROXY units
 		

@@ -8,7 +8,7 @@ public class UnitProxy implements IUnit {
 	public UnitProxy(String subjectUnitCode, String subjectUnitName) {
 		this.subjectCode__ = subjectUnitCode;
 		this.subjectName__ = subjectUnitName;
-		unitManager__ = UnitManager.UM();
+		unitManager__ = UnitManager.getUnitManager();
 	}
 
 		

@@ -1,14 +1,15 @@
 package datamanagement;
 
+import java.util.HashMap;
 import java.util.List;
-import org.jdom.*;
+import org.jdom.Element;
 
 public class StudentUnitRecordManager {
 
 	private static StudentUnitRecordManager unitPerStudentRecordManager__ = null;
 	private StudentUnitRecordMap studentMap__;
-	private java.util.HashMap<String, StudentUnitRecordList> subjectToStudentRecord__;
-	private java.util.HashMap<Integer, StudentUnitRecordList> studentToSubjectRecord__;
+	private HashMap<String, StudentUnitRecordList> subjectToStudentRecord__;
+	private HashMap<Integer, StudentUnitRecordList> studentToSubjectRecord__;
 
 	// Check if singleton class exists, return self.
 	public static StudentUnitRecordManager getStudentUnitRecordManager() {
@@ -20,8 +21,8 @@ public class StudentUnitRecordManager {
 	
 	private StudentUnitRecordManager() {
 		studentMap__ = new StudentUnitRecordMap();
-		subjectToStudentRecord__ = new java.util.HashMap<>();
-		studentToSubjectRecord__ = new java.util.HashMap<>();
+		subjectToStudentRecord__ = new HashMap<>();
+		studentToSubjectRecord__ = new HashMap<>();
 	}
 	
 	
@@ -37,21 +38,21 @@ public class StudentUnitRecordManager {
 	@SuppressWarnings("unchecked")
 	private IStudentUnitRecord setStudentUnitRecord(Integer subjectCode, String studentIdentification) {
 		IStudentUnitRecord newStudentPerUnit;
-		for (Element element : (List<Element>) XmlManager.getXML().getDocument()
+		for (Element i : (List<Element>) XmlManager.getXml().getDocument()
 				.getRootElement().getChild("studentUnitRecordTable")
 				.getChildren("record")) {
 			// Boolean flag to check if current element has the same studentID and
 			// subjectCode in the XML database.
 			boolean isEqualToStudentAndSubject = subjectCode.toString().equals(
-					element.getAttributeValue("sid"))
-					&& studentIdentification.equals(element.getAttributeValue("uid"));
+					i.getAttributeValue("sid"))
+					&& studentIdentification.equals(i.getAttributeValue("uid"));
 			if (isEqualToStudentAndSubject) {
 				newStudentPerUnit = new StudentUnitRecord(new Integer(
-						element.getAttributeValue("sid")),
-						element.getAttributeValue("uid"), new Float(
-						element.getAttributeValue("asg1")).floatValue(), new Float(
-						element.getAttributeValue("asg2")).floatValue(), new Float(
-						element.getAttributeValue("exam")).floatValue());
+						i.getAttributeValue("sid")),
+						i.getAttributeValue("uid"), new Float(
+						i.getAttributeValue("asg1")).floatValue(), new Float(
+						i.getAttributeValue("asg2")).floatValue(), new Float(
+						i.getAttributeValue("exam")).floatValue());
 				studentMap__.put(newStudentPerUnit.getStudentId().toString()
 						+ newStudentPerUnit.getUnitCode(), newStudentPerUnit);
 				return newStudentPerUnit;
@@ -69,12 +70,12 @@ public class StudentUnitRecordManager {
 		if (unitRecord != null)
 			return unitRecord;
 		unitRecord = new StudentUnitRecordList();
-		for (Element element : (List<Element>) XmlManager.getXML().getDocument()
+		for (Element i : (List<Element>) XmlManager.getXml().getDocument()
 				.getRootElement().getChild("studentUnitRecordTable")
 				.getChildren("record")) {
-			if (subjectCode.equals(element.getAttributeValue("uid")))
-				unitRecord.add(new StudentUnitRecordProxy(new Integer(element
-				.getAttributeValue("sid")), element.getAttributeValue("uid")));
+			if (subjectCode.equals(i.getAttributeValue("uid")))
+				unitRecord.add(new StudentUnitRecordProxy(new Integer(
+				i.getAttributeValue("sid")), i.getAttributeValue("uid")));
 		}
 		if (unitRecord.size() > 0)// be careful - this could be empty
 			subjectToStudentRecord__.put(subjectCode, unitRecord); 
@@ -90,15 +91,14 @@ public class StudentUnitRecordManager {
 			return studentRecord;
 		// Create new record of student against subject.
 		studentRecord = new StudentUnitRecordList();
-		for (Element element : (List<Element>) XmlManager.getXML().getDocument()
+		for (Element i : (List<Element>) XmlManager.getXml().getDocument()
 				.getRootElement().getChild("studentUnitRecordTable")
 				.getChildren("record"))
 			// Check if current record is the correct student, and if they are add a
 			// new record of the student undertaking this subject.
-			if (studentIdentification.toString().equals(
-					element.getAttributeValue("sid")))
-				studentRecord.add(new StudentUnitRecordProxy(new Integer(element
-						.getAttributeValue("sid")), element.getAttributeValue("uid")));
+			if (studentIdentification.toString().equals(i.getAttributeValue("sid")))
+				studentRecord.add(new StudentUnitRecordProxy(new Integer(
+						i.getAttributeValue("sid")), i.getAttributeValue("uid")));
 		if (studentRecord.size() > 0)// be careful - this could be empty
 			studentToSubjectRecord__.put(studentIdentification, studentRecord); 
 		return studentRecord;
@@ -108,17 +108,17 @@ public class StudentUnitRecordManager {
 	// Save changes to the XML database.
 	@SuppressWarnings("unchecked")
 	public void saveRecord(IStudentUnitRecord student) {
-		for (Element element : (List<Element>) XmlManager.getXML().getDocument()
+		for (Element i : (List<Element>) XmlManager.getXml().getDocument()
 				.getRootElement().getChild("studentUnitRecordTable")
 				.getChildren("record")) {
 			boolean isMatchStudentSubject = student.getStudentId().toString()
-					.equals(element.getAttributeValue("sid"))
-					&& student.getUnitCode().equals(element.getAttributeValue("uid"));
+					.equals(i.getAttributeValue("sid"))
+					&& student.getUnitCode().equals(i.getAttributeValue("uid"));
 			if (isMatchStudentSubject) {
-				element.setAttribute("asg1", new Float(student.getAssignment1()).toString());
-				element.setAttribute("asg2", new Float(student.getAssignment2()).toString());
-				element.setAttribute("exam", new Float(student.getExam()).toString());
-				XmlManager.getXML().saveDocument(); // write out the XML file for continuous save.																		
+				i.setAttribute("asg1", new Float(student.getAssignment1()).toString());
+				i.setAttribute("asg2", new Float(student.getAssignment2()).toString());
+				i.setAttribute("exam", new Float(student.getExam()).toString());
+				XmlManager.getXml().saveDocument(); // write out the XML file for continuous save.																		
 			}
 		}
 		throw new RuntimeException(
