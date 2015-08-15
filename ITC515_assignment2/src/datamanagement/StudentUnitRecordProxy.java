@@ -5,45 +5,62 @@ public class StudentUnitRecordProxy implements IStudentUnitRecord {
 	private String subjectCode__;
 	private StudentUnitRecordManager studentUnitManager__;
 
-	public StudentUnitRecordProxy(Integer studentIdentification, String subjectCode) {
+	public StudentUnitRecordProxy(Integer studentIdentification,
+			String subjectCode) {
 		this.studentIdentification__ = studentIdentification;
 		this.subjectCode__ = subjectCode;
 		this.studentUnitManager__ = StudentUnitRecordManager.getStudentUnitRecordManager();
 	}
-
-	public Integer getStudentID() {
+	
+	
+	public Integer getStudentId() {
 		return studentIdentification__;
 	}
-
+	
+	
 	public String getUnitCode() {
 		return subjectCode__;
 	}
-
-	public float getAsg1() {
-		return studentUnitManager__.getStudentUnitRecord(studentIdentification__, subjectCode__).getAsg1();
+	
+	
+	public float getAssignment1() {
+		return studentUnitManager__.getStudentUnitRecord(studentIdentification__,
+				subjectCode__).getAssignment1();
 	}
 	
-	public void setAsg1(float assignmentOneMark) {
-		studentUnitManager__.getStudentUnitRecord(studentIdentification__, subjectCode__).setAsg1(assignmentOneMark);
-	}
-
-	public float getAsg2() {
-		return studentUnitManager__.getStudentUnitRecord(studentIdentification__, subjectCode__).getAsg2();
+	
+	public void setAssignment1(float assignmentOneMark) {
+		studentUnitManager__.getStudentUnitRecord(studentIdentification__,
+				subjectCode__).setAssignment1(assignmentOneMark);
 	}
 	
-	public void setAsg2(float assignmentTwoMark) {
-		studentUnitManager__.getStudentUnitRecord(studentIdentification__, subjectCode__).setAsg2(assignmentTwoMark);
+	
+	public float getAssignment2() {
+		return studentUnitManager__.getStudentUnitRecord(studentIdentification__,
+				subjectCode__).getAssignment2();
 	}
 
+	
+	public void setAssignment2(float assignmentTwoMark) {
+		studentUnitManager__.getStudentUnitRecord(studentIdentification__,
+				subjectCode__).setAssignment2(assignmentTwoMark);
+	}
+	
+	
 	public float getExam() {
-		return studentUnitManager__.getStudentUnitRecord(studentIdentification__, subjectCode__).getExam();
+		return studentUnitManager__.getStudentUnitRecord(studentIdentification__,
+				subjectCode__).getExam();
 	}
+	
 	
 	public void setExam(float examMark) {
-		studentUnitManager__.getStudentUnitRecord(studentIdentification__, subjectCode__).setExam(examMark);
+		studentUnitManager__.getStudentUnitRecord(studentIdentification__,
+				subjectCode__).setExam(examMark);
 	}
 
+		
 	public float getTotal() {
-		return studentUnitManager__.getStudentUnitRecord(studentIdentification__, subjectCode__).getTotal();
+		return studentUnitManager__.getStudentUnitRecord(studentIdentification__,
+				subjectCode__).getTotal();
 	}
 }
