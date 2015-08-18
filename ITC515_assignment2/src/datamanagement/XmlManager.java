@@ -19,7 +19,8 @@ public class XmlManager {
 	}
 
 	private XmlManager() {
-		String text = AppProperties.getInstance().getProperties().getProperty("XMLFILE");
+		String text = AppProperties.getInstance().getProperties()
+				.getProperty("XMLFILE");
 		try {
 			SAXBuilder saxInstance = new SAXBuilder();
 			saxInstance.setExpandEntities(true);
