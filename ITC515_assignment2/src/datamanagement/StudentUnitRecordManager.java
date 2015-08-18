@@ -54,7 +54,7 @@ public class StudentUnitRecordManager {
 						i.getAttributeValue("asg2")).floatValue(), new Float(
 						i.getAttributeValue("exam")).floatValue());
 				studentMap__.put(newStudentPerUnit.getStudentId().toString()
-						+ newStudentPerUnit.getUnitCode(), newStudentPerUnit);
+						+ newStudentPerUnit.getSubjectCode(), newStudentPerUnit);
 				return newStudentPerUnit;
 			}
 		}
@@ -112,16 +112,16 @@ public class StudentUnitRecordManager {
 				.getRootElement().getChild("studentUnitRecordTable")
 				.getChildren("record")) {
 			boolean isMatchStudentSubject = student.getStudentId().toString()
-					.equals(i.getAttributeValue("sid"))
-					&& student.getUnitCode().equals(i.getAttributeValue("uid"));
+					.equals(i.getAttributeValue("sid")) && student.getSubjectCode()
+					.equals(i.getAttributeValue("uid"));
 			if (isMatchStudentSubject) {
 				i.setAttribute("asg1", new Float(student.getAssignment1()).toString());
 				i.setAttribute("asg2", new Float(student.getAssignment2()).toString());
 				i.setAttribute("exam", new Float(student.getExam()).toString());
-				XmlManager.getXml().saveDocument(); // write out the XML file for continuous save.																		
+				XmlManager.getXml().saveDocument(); // write out the XML file for continuous save.
+				return;
 			}
 		}
-		throw new RuntimeException(
-				"DBMD: saveRecord : no such student record in data");
+		throw new RuntimeException("DBMD: saveRecord : no such student record in data");
 	}
 }
