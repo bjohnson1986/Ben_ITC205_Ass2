@@ -8,16 +8,16 @@ public class UnitProxy implements IUnit {
 	public UnitProxy(String subjectUnitCode, String subjectUnitName) {
 		this.subjectCode__ = subjectUnitCode;
 		this.subjectName__ = subjectUnitName;
-		unitManager__ = UnitManager.getUnitManager();
+		unitManager__ = UnitManager.getInstance();
 	}
 
 		
-	public String getSubjectCode() {
+	public String getUnitCode() {
 		return this.subjectCode__;
 	}
 
 		
-	public String getSubjectName() {
+	public String getUnitName() {
 		return this.subjectName__;
 	}
 	
@@ -83,8 +83,8 @@ public class UnitProxy implements IUnit {
 	}
 	
 	
-	public IStudentUnitRecord getStudentRecord(int studentIdentification) {
-		return unitManager__.getUnit(subjectCode__).getStudentRecord(studentIdentification);
+	public IStudentUnitRecord getStudentRecord(int studentId) {
+		return unitManager__.getUnit(subjectCode__).getStudentRecord(studentId);
 	}
 
 		

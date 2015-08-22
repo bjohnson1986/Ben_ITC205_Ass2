@@ -2,6 +2,7 @@ package datamanagement;
 
 import java.io.IOException;
 import java.io.FileWriter;
+
 import org.jdom.Document;
 import org.jdom.input.SAXBuilder;
 import org.jdom.JDOMException;
@@ -9,13 +10,13 @@ import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
 public class XmlManager {
-	private static XmlManager self__ = null;
+	private static XmlManager instance__ = null;
 	private Document xmlDocument__;
 
-	public static XmlManager getXml() {
-		if (self__ == null)
-			self__ = new XmlManager();
-		return self__;
+	public static XmlManager getInstance() {
+		if (instance__ == null)
+		 instance__ = new XmlManager();
+		return instance__;
 	}
 
 	private XmlManager() {
@@ -41,15 +42,15 @@ public class XmlManager {
 	}
 
 	public void saveDocument() {
-		String xmlfile = AppProperties.getInstance().getProperties()
+		String xmlFile = AppProperties.getInstance().getProperties()
 				.getProperty("XMLFILE");
-		try (FileWriter fout = new FileWriter(xmlfile)) {
+		try (FileWriter fOut = new FileWriter(xmlFile)) {
 			XMLOutputter outputter = new XMLOutputter(Format.getPrettyFormat());
-			outputter.output(xmlDocument__, fout);
-			fout.close();
+			outputter.output(xmlDocument__, fOut);
+			fOut.close();
 		} catch (IOException ioException) {
 			System.err.printf("%s\n",
-					"DBMD : XMLManager : saveDocument : Error saving XML to " + xmlfile);
+					"DBMD : XMLManager : saveDocument : Error saving XML to " + xmlFile);
 			throw new RuntimeException(
 					"DBMD: XMLManager : saveDocument : error writing to file");
 		}

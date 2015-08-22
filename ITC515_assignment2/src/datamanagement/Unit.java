@@ -31,11 +31,11 @@ public class Unit implements IUnit {
 				: constructRecordList;
 	}
 
-	public String getSubjectCode() {
+	public String getUnitCode() {
 		return this.subjectCode__;
 	}
 
-	public String getSubjectName() {
+	public String getUnitName() {
 
 		return this.subjectName__;
 	}
@@ -85,9 +85,9 @@ public class Unit implements IUnit {
 		studentPerUnitRecordList__.add(record);
 	}
 
-	public IStudentUnitRecord getStudentRecord(int studentIdentification) {
+	public IStudentUnitRecord getStudentRecord(int studentId) {
 		for (IStudentUnitRecord record : studentPerUnitRecordList__) {
-			if (record.getStudentId() == studentIdentification)
+			if (record.getStudentId() == studentId)
 				return record;
 		}
 		return null;
@@ -149,7 +149,7 @@ public class Unit implements IUnit {
 	 if (isGradesValid){
 		 throw new
 		 RuntimeException("Assessment cutoffs cannot be less than zero or greater than 100.");
-		}
+	 }
 	 else if (alternativeExitGrade >= passGrade) {
 		 throw new RuntimeException("AE cutoff must be less than PS cutoff.");
 	 }
@@ -162,10 +162,7 @@ public class Unit implements IUnit {
 	 else if (distinctionGrade >= highDistinctionGrade) {
 		 throw new RuntimeException("DI cutoff must be less than HD cutoff.");
 	 }
-	 else{
-	 }
-	 	//Do nothing
-	 }
+	}
 
 	public String getGrade(float assignmentOneMarks, float assignmentTwoMarks,
 			float examMarks) {

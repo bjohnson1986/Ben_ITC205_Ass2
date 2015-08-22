@@ -1,20 +1,20 @@
 package datamanagement;
 
 public class StudentUnitRecordProxy implements IStudentUnitRecord {
-	private Integer studentIdentification__;
+	private Integer studentId__;
 	private String subjectCode__;
 	private StudentUnitRecordManager studentUnitManager__;
 
-	public StudentUnitRecordProxy(Integer studentIdentification,
+	public StudentUnitRecordProxy(Integer studentId,
 			String subjectCode) {
-		this.studentIdentification__ = studentIdentification;
+		this.studentId__ = studentId;
 		this.subjectCode__ = subjectCode;
-		this.studentUnitManager__ = StudentUnitRecordManager.getStudentUnitRecordManager();
+		this.studentUnitManager__ = StudentUnitRecordManager.getInstance();
 	}
 	
 	
 	public Integer getStudentId() {
-		return studentIdentification__;
+		return studentId__;
 	}
 	
 	
@@ -24,43 +24,43 @@ public class StudentUnitRecordProxy implements IStudentUnitRecord {
 	
 	
 	public float getAssignment1() {
-		return studentUnitManager__.getStudentUnitRecord(studentIdentification__,
+		return studentUnitManager__.getStudentUnitRecord(studentId__,
 				subjectCode__).getAssignment1();
 	}
 	
 	
 	public void setAssignment1(float assignmentOneMark) {
-		studentUnitManager__.getStudentUnitRecord(studentIdentification__,
+		studentUnitManager__.getStudentUnitRecord(studentId__,
 				subjectCode__).setAssignment1(assignmentOneMark);
 	}
 	
 	
 	public float getAssignment2() {
-		return studentUnitManager__.getStudentUnitRecord(studentIdentification__,
+		return studentUnitManager__.getStudentUnitRecord(studentId__,
 				subjectCode__).getAssignment2();
 	}
 
 	
 	public void setAssignment2(float assignmentTwoMark) {
-		studentUnitManager__.getStudentUnitRecord(studentIdentification__,
+		studentUnitManager__.getStudentUnitRecord(studentId__,
 				subjectCode__).setAssignment2(assignmentTwoMark);
 	}
 	
 	
 	public float getExam() {
-		return studentUnitManager__.getStudentUnitRecord(studentIdentification__,
+		return studentUnitManager__.getStudentUnitRecord(studentId__,
 				subjectCode__).getExam();
 	}
 	
 	
 	public void setExam(float examMark) {
-		studentUnitManager__.getStudentUnitRecord(studentIdentification__,
+		studentUnitManager__.getStudentUnitRecord(studentId__,
 				subjectCode__).setExam(examMark);
 	}
 
 		
 	public float getTotalMarks() {
-		return studentUnitManager__.getStudentUnitRecord(studentIdentification__,
+		return studentUnitManager__.getStudentUnitRecord(studentId__,
 				subjectCode__).getTotalMarks();
 	}
 }
