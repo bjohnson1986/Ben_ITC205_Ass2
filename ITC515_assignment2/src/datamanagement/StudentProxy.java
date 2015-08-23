@@ -2,7 +2,7 @@ package datamanagement;
 
 public class StudentProxy implements IStudent {
   
-  private Integer identification_;
+  private Integer id_;
   private String firstName_;
   private String lastName_;
   private StudentManager studentManager_;
@@ -11,7 +11,7 @@ public class StudentProxy implements IStudent {
   // StudentProxy constructor. Sets the relevant variables to the passed
   // integers. Additionally, retrieves the StudentManager instance.
   public StudentProxy(Integer id, String firstName, String lastName) {
-    this.identification_ = id;
+    this.id_ = id;
     this.firstName_ = firstName;
     this.lastName_ = lastName;
     this.studentManager_ = StudentManager.getInstance();
@@ -19,7 +19,7 @@ public class StudentProxy implements IStudent {
 
   
   public Integer getId() {
-    return this.identification_;
+    return this.id_;
   }
 
   
@@ -34,19 +34,19 @@ public class StudentProxy implements IStudent {
 
   
   public void setFirstName(String firstName) {
-    this.studentManager_.getStudent(this.identification_).setFirstName(firstName);
+    this.studentManager_.getStudent(this.id_).setFirstName(firstName);
   }
 
   
   public void setLastName(String lastName) {
-    this.studentManager_.getStudent(this.identification_).setLastName(lastName);
+    this.studentManager_.getStudent(this.id_).setLastName(lastName);
   }
 
   
   // The method addUnitRecord adds a single passed student unit record to
   // the StudentManager of this StudentProxy object.
   public void addUnitRecord(IStudentUnitRecord studentRecord) {
-    this.studentManager_.getStudent(this.identification_).addUnitRecord(studentRecord);
+    this.studentManager_.getStudent(this.id_).addUnitRecord(studentRecord);
   }
 
   
@@ -54,12 +54,12 @@ public class StudentProxy implements IStudent {
   // returns the entire unit record list, rather it returns one unit
   // record based on a passed unit code.
   public IStudentUnitRecord getUnitRecord(String unitCode) {
-    return this.studentManager_.getStudent(this.identification_).getUnitRecord(unitCode);
+    return this.studentManager_.getStudent(this.id_).getUnitRecord(unitCode);
   }
 
   
   public StudentUnitRecordList getUnitRecords() {
-    return this.studentManager_.getStudent(this.identification_).getUnitRecords();
+    return this.studentManager_.getStudent(this.id_).getUnitRecords();
   }
   
 }

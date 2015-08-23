@@ -1,6 +1,6 @@
 package datamanagement;
 
-import org.jdom.*;
+import org.jdom.Element;
 
 import java.util.HashMap;
 import java.util.List;
@@ -47,7 +47,7 @@ public class StudentManager {
   // If there is no match, it will return null.
   @SuppressWarnings("unchecked")
   private Element getStudentElement(Integer id) {
-    for (Element element : (List<Element>) XmlManager.getXML().getDocument()
+    for (Element element : (List<Element>) XmlManager.getInstance().getDocument()
         .getRootElement().getChild("studentTable").getChildren("student")) {
       if (id.toString().equals(element.getAttributeValue("sid"))) {
         return element;
@@ -65,7 +65,7 @@ public class StudentManager {
     IStudent iStudent;
     Element element = getStudentElement(id);
     if (element != null) {
-      StudentUnitRecordList recordList = StudentUnitRecordManager.instance()
+      StudentUnitRecordList recordList = StudentUnitRecordManager.getInstance()
                                          .getRecordsByStudent(id);
       iStudent = new Student(new Integer(element.getAttributeValue("sid")),
                              element.getAttributeValue("fname"), 
@@ -105,7 +105,7 @@ public class StudentManager {
 
     studentMap = new StudentMap();
     IStudent iStudent;
-    StudentUnitRecordList unitRecords = StudentUnitRecordManager.instance()
+    StudentUnitRecordList unitRecords = StudentUnitRecordManager.getInstance()
                                         .getRecordsBySubject(unitCode);
     for (IStudentUnitRecord student : unitRecords) {
       iStudent = createStudentProxy(new Integer(student.getStudentId()));

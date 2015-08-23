@@ -36,7 +36,7 @@ public class StudentUnitRecord implements IStudentUnitRecord {
   public void setAssignment1(float assignment1) {
     // The following boolean and if structure is in conjunction with standard 53.
     boolean isInvalid = (assignment1 < 0) || 
-                        (assignment1 > UnitManager.getUnitManager().
+                        (assignment1 > UnitManager.getInstance().
                          getUnit(this.unitCode_).getAssignment1Weight());
     if (isInvalid) {
       throw new RuntimeException("Mark cannot be less than zero," +
@@ -57,7 +57,7 @@ public class StudentUnitRecord implements IStudentUnitRecord {
   public void setAssignment2(float assignment2) {
     // The following boolean and if structure is in conjunction with standard 53.
     boolean isInvalid = (assignment2 < 0) ||
-                        (assignment2 > UnitManager.getUnitManager().
+                        (assignment2 > UnitManager.getInstance().
                          getUnit(this.unitCode_).getAssignment2Weight());
     if (isInvalid) {
       throw new RuntimeException("Mark cannot be less than zero," +
@@ -78,7 +78,7 @@ public class StudentUnitRecord implements IStudentUnitRecord {
   public void setExam(float exam) {
     // The following boolean and if structure is in conjunction with standard 53.
     boolean isInvalid = (exam < 0) ||
-                        (exam > UnitManager.getUnitManager().
+                        (exam > UnitManager.getInstance().
                          getUnit(this.unitCode_).getExamWeight());
     if (isInvalid) {
       throw new RuntimeException("Mark cannot be less than zero," +
@@ -96,7 +96,7 @@ public class StudentUnitRecord implements IStudentUnitRecord {
   
   // The method getTotal will return the total marks of each assignment,
   // plus the final exam.
-  public float getTotal() {
+  public float getTotalMarks() {
     return this.assignmentOneResult_ + this.assignmentTwoResult_ + this.examResult_;
   }
   

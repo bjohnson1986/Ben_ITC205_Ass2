@@ -8,7 +8,7 @@ public class ListUnitsControl {
   // Constructor for the ListUnitsCTL class. It retrieves
   // the UnitManager instance.
   public ListUnitsControl() {
-    unitManager_ = UnitManager.getUnitManager();
+    unitManager_ = UnitManager.getInstance();
   }
   
 
