@@ -18,7 +18,7 @@ public class StudentUnitRecordProxy implements IStudentUnitRecord {
 	}
 	
 	
-	public String getSubjectCode() {
+	public String getUnitCode() {
 		return subjectCode__;
 	}
 	

@@ -52,8 +52,8 @@ public class UnitProxy implements IUnit {
 	}
 	
 	
-	public float getDistinctionCuttoff() {
-		return unitManager__.getUnit(subjectCode__).getDistinctionCuttoff();
+	public float getDistinctionCutoff() {
+		return unitManager__.getUnit(subjectCode__).getDistinctionCutoff();
 	}
 	
 		

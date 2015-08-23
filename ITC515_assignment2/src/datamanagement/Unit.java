@@ -64,7 +64,7 @@ public class Unit implements IUnit {
 		this.creditCutOff__ = cutoff;
 	}
 
-	public float getDistinctionCuttoff() {
+	public float getDistinctionCutoff() {
 		return this.distinctionCutOff__;
 	}
 
