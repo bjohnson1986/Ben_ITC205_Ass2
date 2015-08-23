@@ -1,20 +1,21 @@
 package datamanagement;
 
 import java.util.Properties;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 
 public class AppProperties 
 {
-	private static AppProperties self_ = null;
+	private static AppProperties instance_ = null;
 	private Properties properties_;
 
 	
 	public static AppProperties getInstance() {
-		if (self_ == null) {
-			self_ = new AppProperties();
+		if (instance_ == null) {
+			instance_ = new AppProperties();
 		}
-		return self_;
+		return instance_;
 	}
 
 	
