@@ -30,5 +30,5 @@ public interface IUnit {
   public void addStudentRecord(IStudentUnitRecord studentRecord );
   public IStudentUnitRecord getStudentRecord(int studentId );
   
-  public StudentUnitRecordList getStudentReocrdList();
+  public StudentUnitRecordList getStudentRecordList();
 }
