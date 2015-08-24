@@ -37,10 +37,10 @@ public class CheckGradeControl {
 			checkGradeUi_.setStudentActive(false);
 		}
 		else {
-      ListStudentsControl listStudentControl = new ListStudentsControl();
-      listStudentControl.listStudents(checkGradeUi_, unitCode);
-      this.unitCode_ = unitCode;
-checkGradeUi_.setStudentActive(true);
+			ListStudentsControl listStudentControl = new ListStudentsControl();
+			listStudentControl.listStudents(checkGradeUi_, unitCode);
+			this.unitCode_ = unitCode;
+			checkGradeUi_.setStudentActive(true);
 		}
 		checkGradeUi_.setMarksActive(false);
 	}
