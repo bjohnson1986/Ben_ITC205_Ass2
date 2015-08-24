@@ -88,7 +88,7 @@ public class CheckGradeUserInterface extends JFrame implements IUnitLister,
 
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-    titleLabel_.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+    titleLabel_.setFont(new Font("Tahoma", 0, 16)); // NOI18N
     titleLabel_.setText("Check Grade UI");
 
     unitPanel_.setBorder(BorderFactory.createTitledBorder("Unit"));
@@ -257,8 +257,8 @@ public class CheckGradeUserInterface extends JFrame implements IUnitLister,
 
     gradePanel_.setBorder(BorderFactory.createTitledBorder("Grade"));
 
-    gradeLabel_.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-    gradeLabel_.setForeground(new java.awt.Color(255, 0, 0));
+    gradeLabel_.setFont(new Font("Tahoma", 0, 24)); // NOI18N
+    gradeLabel_.setForeground(new Color(255, 0, 0));
     gradeLabel_.setHorizontalAlignment(SwingConstants.CENTER);
     gradeLabel_.setText("grade");
 

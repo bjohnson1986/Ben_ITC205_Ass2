@@ -40,7 +40,7 @@ public class CheckGradeControl {
       ListStudentsControl listStudentControl = new ListStudentsControl();
       listStudentControl.listStudents(checkGradeUi_, unitCode);
       this.unitCode_ = unitCode;
-      checkGradeUi_.setStudentActive(true);
+checkGradeUi_.setStudentActive(true);
 		}
 		checkGradeUi_.setMarksActive(false);
 	}
@@ -98,11 +98,11 @@ public class CheckGradeControl {
 		IUnit unit = UnitManager.getInstance().getUnit(unitCode_);
 		IStudent student = StudentManager.getInstance().getStudent(currentStudentId_);
 
-		IStudentUnitRecord record = student.getUnitRecord(unitCode_);
-		record.setAssignment1(assignment1);
-		record.setAssignment2(assignment2);
-		record.setExam(exam);
-		StudentUnitRecordManager.getInstance().saveRecord(record);
+		IStudentUnitRecord studentUnitRecord = student.getUnitRecord(unitCode_);
+		studentUnitRecord.setAssignment1(assignment1);
+		studentUnitRecord.setAssignment1(assignment2);
+		studentUnitRecord.setExam(exam);
+		StudentUnitRecordManager.getInstance().saveRecord(studentUnitRecord);
 		checkGradeUi_.setChangeButtonActive(true);
 		checkGradeUi_.setMarkEditable(false);
 		checkGradeUi_.setGradeDisplayed(false);
