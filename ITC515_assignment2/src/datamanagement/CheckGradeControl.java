@@ -100,7 +100,7 @@ public class CheckGradeControl {
 
 		IStudentUnitRecord studentUnitRecord = student.getUnitRecord(unitCode_);
 		studentUnitRecord.setAssignment1(assignment1);
-		studentUnitRecord.setAssignment1(assignment2);
+		studentUnitRecord.setAssignment2(assignment2);
 		studentUnitRecord.setExam(exam);
 		StudentUnitRecordManager.getInstance().saveRecord(studentUnitRecord);
 		checkGradeUi_.setChangeButtonActive(true);
