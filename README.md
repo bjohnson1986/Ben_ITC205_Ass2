@@ -1,7 +1,3 @@
-Ben_ITC205_Ass2
-
-Ben's individual development repository for the team ITC205 Assignment 2.
-
 Team Purpose
 =====================================================================================================
 
@@ -123,3 +119,4 @@ https://github.com/bjohnson1986/Ben_ITC205_Ass2
 Leonard Meerwood's indiviual repository can be located at:
 
 https://github.com/lmeerwood/My_Group11_ITC205
+>>>>>>> 1e5146264bde4f53b2ad633dfd052f48f51fdfc8
