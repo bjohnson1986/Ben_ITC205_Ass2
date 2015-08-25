@@ -1,67 +1,103 @@
 package datamanagement;
 
 public class StudentUnitRecord implements IStudentUnitRecord {
-	private Integer sid;
-	private String uc;
-	private float a1, a2, ex;
+  
+  private Integer studentId_;
+  private String unitCode_;
+  private float assignmentOneResult_;
+  private float assignmentTwoResult_;
+  private float examResult_;
 
-	public StudentUnitRecord(Integer id, String code, float asg1, float asg2,
-			float exam) {
-		this.sid = id;
-		this.uc = code;
-		this.setAsg1(asg1);
-		this.setAsg2(asg2);
-		this.setExam(exam);
-	}
+  
+  // StudentUnitRecord constructor. Takes the passed arguments to set the 
+  // variables for the object instance.
+  public StudentUnitRecord(Integer id, String unitCode, float assignment1, 
+                           float assignment2, float exam) {
+    this.studentId_ = id;
+    this.unitCode_ = unitCode;
+    this.setAssignment1(assignment1);
+    this.setAssignment2(assignment2);
+    this.setExam(exam);
+  }
 
-	public Integer getStudentID() {
-		return sid;
-	}
+  
+  public Integer getStudentId() {
+    return this.studentId_;
+  }
 
-	public String getUnitCode() {
-		return uc;
-	}
+  
+  public String getUnitCode() {
+    return this.unitCode_;
+  }
 
-	public void setAsg1(float a1) {
-		if (a1 < 0 ||
-			a1 > UnitManager.UM().getUnit(uc).getAsg1Weight()) {
-			throw new RuntimeException("Mark cannot be less than zero or greater than assessment weight");
-		}
-		this.a1 = a1;
-	}
+  
+  // Standard setter for assignment 1 but the argument passed must be greater
+  // than zero and also less than the total weight of the assignment.
+  public void setAssignment1(float assignment1) {
+    // The following boolean and if structure is in conjunction with standard 53.
+    boolean isInvalid = (assignment1 < 0) || 
+                        (assignment1 > UnitManager.getInstance().
+                         getUnit(this.unitCode_).getAssignment1Weight());
+    if (isInvalid) {
+      throw new RuntimeException("Mark cannot be less than zero," +
+                                 " or greater than assessment weight");
+    }
+    
+    this.assignmentOneResult_ = assignment1;
+  }
 
-	public float getAsg1() {
+  
+  public float getAssignment1() {
+    return this.assignmentOneResult_;
+  }
 
-		return a1;
-	}
+  
+  // Standard setter for assignment 2 but the argument passed must be greater
+  // than zero and also less than the total weight of the assignment.
+  public void setAssignment2(float assignment2) {
+    // The following boolean and if structure is in conjunction with standard 53.
+    boolean isInvalid = (assignment2 < 0) ||
+                        (assignment2 > UnitManager.getInstance().
+                         getUnit(this.unitCode_).getAssignment2Weight());
+    if (isInvalid) {
+      throw new RuntimeException("Mark cannot be less than zero," +
+                                 " or greater than assessment weight");
+    }
+    
+    this.assignmentTwoResult_ = assignment2;
+  }
 
-	public void setAsg2(float a2) {
-		if (a2 < 0 ||
-			a2 > UnitManager.UM().getUnit(uc).getAsg2Weight()) {
-			throw new RuntimeException("Mark cannot be less than zero or greater than assessment weight");
-		}
-		this.a2 = a2;
+  
+  public float getAssignment2() {
+    return this.assignmentTwoResult_;
+  }
 
-	}
+  
+  // Standard setter for the exam mark but the argument passed must be greater
+  // than zero and also less than the total weight of the exam.
+  public void setExam(float exam) {
+    // The following boolean and if structure is in conjunction with standard 53.
+    boolean isInvalid = (exam < 0) ||
+                        (exam > UnitManager.getInstance().
+                         getUnit(this.unitCode_).getExamWeight());
+    if (isInvalid) {
+      throw new RuntimeException("Mark cannot be less than zero," +
+                                 " or greater than assessment weight");
+    }
+    
+    this.examResult_ = exam;
+  }
 
-	public float getAsg2() {
-		return a2;
-	}
+  
+  public float getExam() {
+    return this.examResult_;
+  }
 
-	public void setExam(float ex) {
-		if (ex < 0 ||
-				ex > UnitManager.UM().getUnit(uc).getExamWeight()) {
-				throw new RuntimeException("Mark cannot be less than zero or greater than assessment weight");
-			}
-		this.ex = ex;
-	}
-
-	public float getExam() {
-		return ex;
-	}
-
-	public float getTotal() {
-		return a1 + a2 + ex;
-
-	}
+  
+  // The method getTotal will return the total marks of each assignment,
+  // plus the final exam.
+  public float getTotalMarks() {
+    return this.assignmentOneResult_ + this.assignmentTwoResult_ + this.examResult_;
+  }
+  
 }
